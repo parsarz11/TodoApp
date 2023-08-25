@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "AddTask";
+}
+@model TodoApp.Data.Entites.TodoTask
+
+<h1>AddTask</h1>
+
+<div class="container">
+    <form asp-controller="Task" asp-action="AddTask" method="post">
+        <div class="form-group">
+            <label>Name</label>
+            <input asp-for="Name" type="text" class="form-control" id="" aria-describedby="" placeholder="Enter Task Name">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+
+        <select class="form-control" asp-for="TaskType">
+            <option value="Daily">Daily</option>
+            <option value="Important">Important</option>
+            <option value="weekly">weekly</option>
+            <option value="none">none</option>
+        </select>
+
+        <div class="form-group">
+            <label>Reminder</label>
+            <input asp-for="Reminder" type="datetime-local" class="form-control" id="" aria-describedby="" placeholder="Enter Task Name">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <input type="hidden" asp-for="date" value="@DateTime.Now"/>
+
+        <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+</div>
