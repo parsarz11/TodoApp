@@ -14,45 +14,9 @@
 
         }
     </select>
-    @*<table class="table" id="TaskTable">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">TaskType</th>
-                <th scope="col">Status</th>
-                <th scope="col">Reminder</th>
-                <th scope="col">Date </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(var item in Model)
-            {
-                <tr>
-                    <th scope="row">@count</th>
-                    <td>@item.Name</td>
-                    <td>@item.TaskType</td>
-                    <td>@if (item.Status == true)
-                        {
-                            <i class="bi bi-check"></i>
-                        }else
-                        {
-                            <i class="bi bi-x-lg"></i>
-                        }
+   
 
-                    </td>
-                    <td>@item.Reminder</td>
-                    <td>@item.date</td>
-                </tr>
-
-                count++;
-            }
-        </tbody>
-        </table>*@
-
-        <div id="TableDiv">
-
-        </div>
+        <div id="TableDiv"></div>
 </div>
 
 @section Scripts
@@ -60,14 +24,7 @@
     <script src="/js/TaskPage.js"></script>
 
     <script>
-        //$("#optionselect").change(function () {
-        //    var value = $("#optionselect option:selected").val();
-        //
-        //    IsChanged = true;
-        //}
-        //    console.log(value)
-        //    GetDataWithAjax(value.toString())
-        //});
+       
     </script>
 
 }
@@ -75,30 +32,31 @@
 @section Css
 {
     <style>
-    #TaskTbl {
-      font-family: Arial, Helvetica, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
+        /*
+        #TaskTbl {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
 
-    #TaskTbl td, #TaskTbl th {
-      border: 1px solid #ddd;
-      padding: 8px;
-    }
+        #TaskTbl td, #TaskTbl th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
 
-    #TaskTbl tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
+        #TaskTbl tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-    #TaskTbl tr:hover {background-color: #ddd;}
+        #TaskTbl tr:hover {background-color: #ddd;}
 
-    #TaskTbl th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: left;
-      background-color: #04AA6D;
-      color: white;
-    }
-           
+        #TaskTbl th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #04AA6D;
+          color: white;
+        }
+        */       
     </style>
 }

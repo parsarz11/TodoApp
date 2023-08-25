@@ -19,59 +19,53 @@ function GetDataWithAjax(taskType) {
 
         $("#TaskDiv").remove();
         createTable(result)
-    //------------------------------
+    
     })
 }
-//-----------------------------
-                // <th scope="col">#</th>
-                // <th scope="col">Name</th>
-                // <th scope="col">TaskType</th>
-                // <th scope="col">Status</th>
-                // <th scope="col">Reminder</th>
-                // <th scope="col">Date </th>
 
+               
 function createTable(result) {
     jQuery('<div>', {
         id: 'TaskDiv',
-        class: '',
-        title: ''
     }).appendTo('#TableDiv');
-
-    $("#TaskDiv").append(`
-    <table id="TaskTbl">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">TaskType</th>
-                <th scope="col">Status</th>
-                <th scope="col">Reminder</th>
-                <th scope="col">Date </th>
-            </tr>
-        </thead>
-        <tbody>
+    var count = 1;
+    $("#TaskDiv").append(
+        `
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="row">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">TaskType</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Reminder</th>
+                    <th scope="col">Date </th>
+                </tr>
+            </thead>
+            <tbody>
            
-        ${
-            result.map(item => {
-                var stringg = `<tr>
-                    <td scope="row">${1}</td>
-                    <td>${item.name}</td>
-                    <td>${item.taskType}</td>
+            ${
+                
+                result.map(item => {
+                    var stringg = `<tr>
+                        <td scope="row">${count}</td>
+                        <td>${item.name}</td>
+                        <td>${item.taskType}</td>
             
-                    ${Test(item.status)}
-                    <td>${item.Reminder}</td>
-                    <td>${item.date}</td>
+                        ${Test(item.status)}
+                        <td>${item.Reminder}</td>
+                        <td>${item.date}</td>
             
-                </tr>`
-            //count++
-            return stringg
-            })
-        }
+                    </tr>`
+                count++
+                return stringg
+                })
+            }
             
             
         
         </tbody>
-    </table>`);
+        </table>`);
 
 }
 
