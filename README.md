@@ -33,3 +33,10 @@
   <img src="https://img.shields.io/static/v1?message=Gmail&logo=gmail&label=&color=D14836&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="gmail logo"  href="p.razaghan1387@gmail.com"/>
   <img src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="linkedin logo"  href="https://www.linkedin.com/in/parsa-rz-804a3a271//">
 </div>
+
+
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/parsarz11/TodoApp/output/github-contribution-grid-snake-dark.svg">
+    
+    <!-- <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/parsarz11/platane/output/github-contribution-grid-snake.svg"> -->
+  </picture>
