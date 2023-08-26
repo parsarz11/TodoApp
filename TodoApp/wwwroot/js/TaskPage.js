@@ -1,13 +1,32 @@
 ﻿
 GetDataWithAjax("All")
-
+///Events///
 $('#optionselect').change(function () {
     var value = $("#optionselect option:selected").val();
-
+    
     console.log(value)
     GetDataWithAjax(value.toString())
 });
 
+
+var Div = document.querySelector("#TableDiv")
+let checkbox = Div.getElementsByTagName('input')
+
+$("input:checkbox[name^='foo']").on('change', function () {
+    alert(this.value + ' --- ' + this.checked);
+    
+
+    console.log("vaaaaaaaaaaaay")
+});
+//if (event.checked) {
+//    ChangeStatusAjax($('.StatusCheck').val(), true)
+
+//} else {
+//    ChangeStatusAjax($('.StatusCheck').val(), false)
+
+//}
+
+///Ajaxs///
 function GetDataWithAjax(taskType) {
     $.ajax({
         type: 'GET',
@@ -23,7 +42,26 @@ function GetDataWithAjax(taskType) {
     })
 }
 
-               
+
+function ChangeStatusAjax(id, check)
+{
+    $.ajax({
+        type: 'GET',
+        url: "/api/TaskApi/TaskStatus",
+        data: {
+            status: check,
+            Id : id,
+        }
+    }).done(function (result) {
+
+        console.log(result)
+
+        //$("#TaskDiv").remove();
+        createTable(result)
+
+    })
+}
+///Table///  
 function createTable(result) {
     jQuery('<div>', {
         id: 'TaskDiv',
@@ -52,7 +90,7 @@ function createTable(result) {
                         <td>${item.name}</td>
                         <td>${item.taskType}</td>
             
-                        ${Test(item.status)}
+                        <td>${IsDone(item,count)}</td>
                         <td>${item.Reminder}</td>
                         <td>${item.date}</td>
             
@@ -60,6 +98,7 @@ function createTable(result) {
                 count++
                 return stringg
                 })
+                //${IsDone(item.status)}
             }
             
             
@@ -69,12 +108,16 @@ function createTable(result) {
 
 }
 
-function Test(status){
-    if (status == true) {
-        return `<td><i class="bi bi-check"></i></td>`
+function IsDone(item,count){
+    if (item.status == true) {
+    //     return `<td><i class="bi bi-check"></i></td>`
+        return `<input type="checkbox" name="StatusCheck" value="${item.id}"  class="StatusCheck"  id="Check${count}"checked onclick="ChangeStatusAjax(${item.id},true)">`
 
-    }else if (status == false) {
+    }else if (item.status == false) {
+        return `<input type="checkbox" name="StatusCheck" value="${item.id}"  class="StatusCheck"  id="check${count}" onclick="ChangeStatusAjax(${item.id},false)">`
 
-        return `<td><i class="bi bi-x-lg"></i></td>`
+
+    //     return `<td><i class="bi bi-x-lg"></i></td>`
     }
+
 }

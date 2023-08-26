@@ -39,11 +39,5 @@ namespace TodoApp.Controllers
             _taskRepo.AddTask(todoTask);
             return RedirectToAction("Tasks");
         }
-
-        public IActionResult DeleteTask() 
-        { 
-            return View();
-        }
-
     }
 }

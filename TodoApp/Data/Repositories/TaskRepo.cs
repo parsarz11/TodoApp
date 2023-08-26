@@ -30,11 +30,26 @@ namespace TodoApp.Data.Repositories
             _TodoContext.SaveChanges();
         }
         
-        public void TaskStatus(int Id)
+        public TodoTask GetTaskById(int id)
         {
-            var selectById = _TodoContext.Tasks.SingleOrDefault(x=> x.Id == Id);
-            selectById.Status = true; 
-            _TodoContext.SaveChanges();
+           return _TodoContext.Tasks.Where(x=>x.Id == id).FirstOrDefault();
+        }
+
+        public void TaskStatus(int Id, bool check)
+        {
+            if (check == true)
+            {
+                var selectById = _TodoContext.Tasks.SingleOrDefault(x => x.Id == Id);
+                selectById.Status = false;
+                _TodoContext.SaveChanges();
+            }
+            else if (check == false)
+            {
+                var selectById = _TodoContext.Tasks.SingleOrDefault(x => x.Id == Id);
+                selectById.Status = true;
+                _TodoContext.SaveChanges();
+            }
+
         }
     }
 }
