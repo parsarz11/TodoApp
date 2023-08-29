@@ -10,17 +10,20 @@ namespace TodoApp.Controllers
     {
         private readonly TaskService _taskSerivce;
         private readonly TaskRepo _taskRepo;
+        private readonly EmailSender _emailSender;
 
-        public TaskController(TaskService taskSerivce,TaskRepo taskRepo)
+        public TaskController(TaskService taskSerivce,TaskRepo taskRepo, EmailSender emailSender)
         {
             _taskSerivce = taskSerivce;
             _taskRepo = taskRepo;
+            _emailSender = emailSender;
         }
 
 
         [HttpGet]
         public IActionResult Tasks()
         {
+            //_emailSender.SendEmail("www.google.com","p.razaghan1387@gmail.com");
             var taskList = _taskSerivce.TaskDisplay();
             return View(taskList);
         }

@@ -1,0 +1,53 @@
+﻿@font-face {
+    font-family: interBold;
+    src: url('../Font/InterFont/Inter-Bold.ttf');
+}
+
+@font-face {
+    font-family: interThin;
+    src: url('../Font/InterFont/Inter-Thin.ttf');
+}
+
+.TaskContainer {
+    width: 320px;
+    height: 150px;
+    background-color: #D9D9D9;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+#TaskContent {
+    text-align: left;
+    padding-left: 30px;
+    padding-top: 5px;
+}
+
+Taskh2 {
+    margin: 0px 0px 8px 0px;
+    font-family: interBold;
+}
+
+Taskh4 {
+    font-family: interThin;
+    margin: 0px;
+    padding-bottom: 12px;
+}
+
+#TaskCheck {
+    /* align-items: center; */
+    height: 100%;
+}
+
+/* -------------------- */
+
+.DivCenter {
+    height: 100%;
+    padding: 32px 0;
+    /* border: 3px solid green; */
+    text-align: center;
+}
+
+input {
+    height: 50px;
+    width: 50px;
+}

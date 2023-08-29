@@ -30,10 +30,6 @@ namespace TodoApp.Controllers
             _taskRepo.TaskStatus(Id, Status);
             return Ok();
         }
-        //    [HttpPost]
-        //public IActionResult TaskStatus(bool Status, int Id)
-        //{
-            
-        //}
+        
     }
 }

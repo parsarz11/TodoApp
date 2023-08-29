@@ -10,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<TaskService>();
 builder.Services.AddScoped<TaskRepo>();
+builder.Services.AddScoped<EmailSender>();
+
 builder.Services.AddDbContext<TodoDatabaseContext>(config=>
 {
     config.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
