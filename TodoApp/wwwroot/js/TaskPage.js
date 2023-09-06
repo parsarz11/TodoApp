@@ -1,25 +1,17 @@
-﻿
+﻿//Gets All Task from Api
 GetDataWithAjax("All")
-///Events///
+
+
+///events///
+// Handle Select Event for Task Selection
 $('#optionselect').change(function () {
     var value = $("#optionselect option:selected").val();
-    
-    console.log(value)
+
     GetDataWithAjax(value.toString())
 });
-
-
-var Div = document.querySelector("#TableDiv")
-let checkbox = Div.getElementsByTagName('input')
-
-$("input:checkbox[name^='foo']").on('change', function () {
-    alert(this.value + ' --- ' + this.checked);
-    
-
-    console.log("vaaaaaaaaaaaay")
-});
-
 ///Ajaxs///
+
+// Get Data From Api Using jquery Ajax
 function GetDataWithAjax(taskType) {
     $.ajax({
         type: 'GET',
@@ -30,12 +22,12 @@ function GetDataWithAjax(taskType) {
         console.log(result)
 
         $("#TaskDiv").remove();
-        createTable(result)
+        createTask(result)
     
     })
 }
 
-
+// Change status of is done checkbox
 function ChangeStatusAjax(id, check)
 {
     $.ajax({
@@ -50,27 +42,28 @@ function ChangeStatusAjax(id, check)
         console.log(result)
 
         //$("#TaskDiv").remove();
-        createTable(result)
+        createTask(result)
 
     })
 }
-///Table///  
-function createTable(result) {
-
+///Tasks Creation///  
+function createTask(result) {
+    // Make a div using Jquery
     jQuery('<div>', {
         id: 'TaskDiv',
     }).appendTo('#TableDiv');
     var count = 1;
     $("#TaskDiv").append(
         
+        // Mapping Json to html code
         result.map(item => {
 
         var result = 
         `
             <div class="TaskContainer">
             <div id="TaskContent" class="col-md-8">
-                <h2 class="Taskh2">${item.name}</h2>
-                <h4 class="Taskh4">${item.taskType}</h4>
+                <h3 class="Taskh3">${item.name}</h3>
+                ${TaskTypeStyleFunction(item.taskType)}
                 <!-- ///////////////// -->
                 <!-- Trigger the modal with a button -->
                 <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal${count}">Show All</button>
@@ -85,8 +78,8 @@ function createTable(result) {
                         </div>
                         <div class="modal-body">
                         <p>
-                            <h2 class="Taskh2">${item.name}</h2>
-                            <h4 class="Taskh4">${item.taskType}</h4>
+                            <h3 class="Taskh3">${item.name}</h3>
+                            ${TaskTypeStyleFunction(item.taskType)}
                             <h4 class="Taskh4">Reminder : ${DateChanger(item.reminder) }</h4>
                         <h4 class="Taskh4">Date : ${DateChanger(item.date) }</h4>
 
@@ -112,9 +105,7 @@ function createTable(result) {
             </div>
         </div>
         `
-            console.log(DateChanger(item.reminder))
-            console.log("dddd")
-            console.log(DateChanger(item.date))
+            
             count++
         return result
         })
@@ -125,7 +116,7 @@ function createTable(result) {
         
 
 
-
+// Get task status and Check status and make checkboxs 
 function IsDone(item,count){
     if (item.status == true) {
     //     return `<td><i class="bi bi-check"></i></td>`
@@ -142,8 +133,24 @@ function IsDone(item,count){
 
 }
 
-function TaskTypeStyleFunction(item) {
-    return `${item.taskType}`
+// This function change Task type h4 colors
+function TaskTypeStyleFunction(Type) {
+    if (Type == 'Important') {
+
+        return `<h4 class="Taskh4 text-danger">${Type}</h4>`
+    } else if (Type == 'Daily') {
+        return `<h4 class="Taskh4 text-primary">${Type}</h4>`
+
+    } else if (Type == 'none') {
+        return `<h4 class="Taskh4 text-dark">${Type}</h4>`
+    } else if (Type == 'weekly') {
+        return `<h4 class="Taskh4 text-warning">${Type}</h4>`
+    } else {
+        return `<h4 class="Taskh4 text-success">${Type}</h4>`
+    }
+       
+    
+
 }
 
 
@@ -175,7 +182,7 @@ function Modal(item)
                         </div>
                         <div class="modal-body">
                         <p>
-                            <h2 class="Taskh2">${item.name}</h2>
+                            <h3 class="Taskh3">${item.name}</h3>
                             <h4 class="Taskh4">${item.taskType}</h4>
                             <h4 class="Taskh4">Reminder : ${item.reminder}</h4>
                         <h4 class="Taskh4">Date : ${item.date}</h4>

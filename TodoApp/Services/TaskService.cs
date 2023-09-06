@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using TodoApp.Data.Repositories;
 using TodoApp.Models.ViewModel;
 
@@ -24,7 +25,8 @@ namespace TodoApp.Services
                     TaskType = x.TaskType,
                     Status = x.Status,
                     Reminder = x.Reminder,
-                    date = x.date
+                    date = x.date,
+                    TaskList = taskList
                 };
 
 

@@ -14,35 +14,69 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     @await RenderSectionAsync("Css",required: false)
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+<body style="background-color: #EDF2F4;">
+    <div class="w-100 h-100 ">
+
+
+
+
+
+
+        <main role="main" class="main" style="left: -4%">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TodoApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="task" asp-action="AddTask">add task</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="task" asp-action="tasks">tasks</a>
-                        </li>
-                    </ul>
+                <div class="row" style="flex-wrap: nowrap;">
+                    <div class="col-sm-auto sticky-top   shadow-lg" style="background-color:#2B2D42;">
+                        <div class="d-flex flex-sm-column flex-row flex-nowrap align-items-center sticky-top" style="background-color:#2B2D42;font-size: 20px;">
+                            <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+                                <li>
+                                    <a asp-controller="Task" asp-action="DashBoard" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="DashBoard" data-toggle="tooltip">
+                                        <i class="bi bi-graph-down"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Task" asp-action="Tasks" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="category" data-toggle="tooltip" data-placement="right" title="Hooray!">
+                                        <i class="bi bi-list-check"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="task" asp-action="AddTask" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="income" data-toggle="tooltip">
+                                        <i class="bi bi-clipboard2-plus"></i>
+                                    </a>
+                                </li>
+                                <!--<li>
+                                    <a asp-controller="Expense" asp-action="Expenses" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Expense" data-toggle="tooltip">
+                                        
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="AboutMe" asp-action="Index" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="info" data-toggle="tooltip">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info" viewBox="0 0 16 16">
+                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                        </svg>
+                                    </a>
+                                </li>-->
+                            </ul>
+                            @* <div class="dropdown">
+                            <a class="d-flex align-items-center justify-content-center nav-link py-3 px-2 text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person"></i>
+                            </a>
+                            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+                            <!--<li><a class="dropdown-item" href="#">New project...</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>-->
+                            <li><a class="dropdown-item" asp-controller="DashBoard" asp-action="DashBoard">Profile</a></li>
+                            </ul>
+                            </div>*@
+                        </div>
+                    </div>
+                    <div class="col-sm p-3 min-vh-100" style="">
+                        @RenderBody()
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
         </main>
     </div>
 
-    
+    <script src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

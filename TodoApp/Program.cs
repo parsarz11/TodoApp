@@ -11,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<TaskService>();
 builder.Services.AddScoped<TaskRepo>();
 builder.Services.AddScoped<EmailSender>();
+builder.Services.AddScoped<DashBoardServices>();
+
 
 builder.Services.AddDbContext<TodoDatabaseContext>(config=>
 {
@@ -41,6 +43,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Task}/{action=Tasks}/{id?}");
+    pattern: "{controller=Task}/{action=DashBoard}/{id?}");
 
 app.Run();

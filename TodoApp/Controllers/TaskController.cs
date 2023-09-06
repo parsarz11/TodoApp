@@ -42,5 +42,17 @@ namespace TodoApp.Controllers
             _taskRepo.AddTask(todoTask);
             return RedirectToAction("Tasks");
         }
+
+        [HttpGet]
+        public IActionResult DashBoard()
+        {
+
+            return View();
+        }
+
+        public IActionResult test()
+        {
+            return View();
+        }
     }
 }

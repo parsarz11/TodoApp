@@ -1,16 +1,16 @@
-﻿@model List<TodoApp.Models.ViewModel.TaskViewModel>
-@{
+﻿@*@model List<TodoApp.Models.ViewModel.TaskViewModel>
+*@@{
     int count = 1;
     bool IsChanged = false;
 }
 
 <div class="container">
 
-    <select style="background-color:#edede9; border-radius:10px;" id="optionselect">
-        <option style="background-color:f5ebe0;" value="All">All</option>
+    <select @*style="background-color:#edede9; border-radius:10px;"*@ id="optionselect" class="form-select">
+        <option style="background-color:f5ebe0;" value="All" >All</option>
         @foreach (var item in Model)
         {
-            <option style="background-color:f5ebe0;" value="@item.TaskType">@item.TaskType</option>
+            <option style="background-color:f5ebe0;" value="@item.TaskType" onselect="GetDataWithAjax(@item.TaskType)">@item.TaskType</option>
 
         }
     </select>
